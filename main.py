@@ -7,3 +7,7 @@ env = gym.make(env_name)
 
 Alpha = 0.1
 Gamma = 0.9
+
+
+class Agent:
+    
