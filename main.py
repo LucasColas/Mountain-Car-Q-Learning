@@ -12,7 +12,7 @@ Gamma = 0.9
 
 def create_Q_table(env):
     ObservationSpace_Size = [30] * len(env.observation_space.low)
-    Q_table = ObservationSpace_Size 
+    Q_table = [ObservationSpace_Size] 
     return Q_table
 
 
