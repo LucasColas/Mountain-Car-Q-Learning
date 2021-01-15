@@ -15,6 +15,9 @@ def create_Q_table(env):
     Q_table = np.random.uniform(Low=-2, high=0, size=(ObservationSpace_Size + [env.action_space.n]))
     return Q_table
 
+env.reset()
+Q_table = create_Q_table(env)
+
 
 class Agent:
     def __init__(env):
