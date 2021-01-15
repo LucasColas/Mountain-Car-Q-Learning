@@ -19,6 +19,7 @@ def create_Q_table(env):
 env.reset()
 Q_table = create_Q_table(env)
 print(Q_table)
+print(len(Q_table[0]))
 
 class Agent:
     def __init__(env):
