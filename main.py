@@ -15,5 +15,10 @@ Alpha = 0.1
 Gamma = 0.9
 Eps = 1.0
 
+def get_discrete_state(state):
+    
+
 def create_Q_table():
-     pass 
+     Q = {}
+
+     return Q
