@@ -10,19 +10,3 @@ env = gym.make(env_name)
 
 Alpha = 0.1
 Gamma = 0.9
-
-def create_Q_table(env):
-    ObservationSpace_Size = [30] * len(env.observation_space.low)
-    Q_table = np.random.uniform(low=-2, high=0, size=(ObservationSpace_Size + [env.action_space.n]))
-    return Q_table
-
-env.reset()
-Q_table = create_Q_table(env)
-print(Q_table)
-print(len(Q_table[0]))
-print("Q_table[1]", Q_table[1])
-print("action", np.argmax(Q_table[1]))
-
-class Agent:
-    def __init__(env):
-        self.env = env
