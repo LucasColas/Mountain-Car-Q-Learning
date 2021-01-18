@@ -39,7 +39,10 @@ def create_Q_table():
 
 
 def main(env,Alpha,Gamma,Eps,n_ep=5000):
-    env.reset()
+    done = False
 
     for i in range(n_ep):
-        
+        obs = env.reset()
+        obs_dis = get_discrete_state(obs)
+        while not done:
+            if np.random.random() > Eps:
