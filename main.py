@@ -41,6 +41,8 @@ def get_best_action(state,Q):
     actions = np.array([Q[state,act] for act in range(3)])
     best_action = np.argmax(actions)
 
+    return best_action
+
 def main(env,Alpha,Gamma,Eps,n_ep=5000):
     done = False
 
