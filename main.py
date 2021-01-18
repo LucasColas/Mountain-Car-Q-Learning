@@ -26,8 +26,13 @@ def get_discrete_state(state):
 
 def create_Q_table():
      Q = {}
+     states = []
      for i in range(len(pos_chunk)):
          for j in range(len(vel_chunk)):
-             pass 
+             states.append((i,j))
+
+    for state in states:
+        for action in range(3):
+            Q[state,action] = 0
 
      return Q
