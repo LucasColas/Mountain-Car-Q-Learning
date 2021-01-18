@@ -47,8 +47,14 @@ def main(env,Alpha,Gamma,Eps,n_ep=5000):
     done = False
 
     for i in range(n_ep):
-        obs = env.reset()
-        obs_dis = get_discrete_state(obs)
+        state = env.reset()
+        state_dis = get_discrete_state(state)
         while not done:
             if np.random.random() > Eps:
-                action = get_best_action(state,Q)
+                action = get_best_action(state_dis,Q)
+
+            else:
+                action = np.random.choice([0,1,2])
+
+            new_state, reward, done, info = env.step(action)
+            new_state_dis = get_discrete_state(new_state)
