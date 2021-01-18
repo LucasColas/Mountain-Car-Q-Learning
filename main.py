@@ -58,3 +58,5 @@ def main(env,Alpha,Gamma,Eps,n_ep=5000):
 
             new_state, reward, done, info = env.step(action)
             new_state_dis = get_discrete_state(new_state)
+
+            
