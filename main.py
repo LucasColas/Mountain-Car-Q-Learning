@@ -5,8 +5,8 @@ import numpy as np
 
 env_name = "MountainCar-v0"
 env = gym.make(env_name)
-env.reset()
-obs_, reward,done, _ = env.step(1)
+#env.reset()
+#obs_, reward,done, _ = env.step(1)
 #print(obs_)
 print(env.observation_space.high)
 print(env.observation_space.low)
@@ -36,3 +36,10 @@ def create_Q_table():
             Q[state,action] = 0
 
      return Q
+
+
+def main(env,Alpha,Gamma,Eps,n_ep=5000):
+    env.reset()
+
+    for i in range(n_ep):
+        
