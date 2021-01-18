@@ -46,4 +46,4 @@ def main(env,Alpha,Gamma,Eps,n_ep=5000):
         obs_dis = get_discrete_state(obs)
         while not done:
             if np.random.random() > Eps:
-                action =  
+                action = get_max(state,Q)
