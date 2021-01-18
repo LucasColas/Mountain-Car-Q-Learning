@@ -37,6 +37,9 @@ def create_Q_table():
 
      return Q
 
+def get_best_action(state,Q):
+    actions = np.array([Q[state,act] for act in range(3)])
+    best_action = np.argmax(actions)
 
 def main(env,Alpha,Gamma,Eps,n_ep=5000):
     done = False
@@ -46,4 +49,4 @@ def main(env,Alpha,Gamma,Eps,n_ep=5000):
         obs_dis = get_discrete_state(obs)
         while not done:
             if np.random.random() > Eps:
-                action = get_max(state,Q)
+                action = get_best_action(state,Q)
