@@ -59,4 +59,7 @@ def main(env,Alpha,Gamma,Eps,n_ep=5000):
             new_state, reward, done, info = env.step(action)
             new_state_dis = get_discrete_state(new_state)
 
-            
+            new_action = get_best_action(new_state_dis, Q)
+
+            Q[state, action] = Q[state,action] + Alpha*(reward + Gamme*Q[new_state_dis, new_action] - Q[state,action])
+            state_dis = new_state_dis
