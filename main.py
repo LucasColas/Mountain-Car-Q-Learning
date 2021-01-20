@@ -46,6 +46,8 @@ def get_best_action(state,Q):
 def main(env,Alpha,Gamma,Eps,n_ep=5000):
     done = False
 
+
+
     for i in range(n_ep):
         state = env.reset()
         state_dis = get_discrete_state(state)
