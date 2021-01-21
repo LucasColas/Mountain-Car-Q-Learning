@@ -49,8 +49,10 @@ def main(env,Alpha,Gamma,Eps,n_ep=5000):
 
 
     for i in range(n_ep):
+        
         state = env.reset()
         state_dis = get_discrete_state(state)
+
         while not done:
             if np.random.random() > Eps:
                 action = get_best_action(state_dis,Q)
