@@ -1,5 +1,5 @@
 import gym
-import collections
+import matplotlib.pyplot as plt
 import numpy as np
 
 
@@ -79,7 +79,8 @@ def main(env,Alpha,Gamma,Eps,ep=5000):
             Eps -= epsilon_decay
 
         stock_rewards[i] = Rewards
-
+    Visualize(stock_rewards)
 
 def Visualize(stock_rewards):
-    pass
+    plt.scatter(stock_rewards)
+    plt.show()
