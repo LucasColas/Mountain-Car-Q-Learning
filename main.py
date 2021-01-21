@@ -43,13 +43,13 @@ def get_best_action(state,Q):
 
     return best_action
 
-def main(env,Alpha,Gamma,Eps,n_ep=5000):
+def main(env,Alpha,Gamma,Eps,ep=5000):
     done = False
 
-    epsilon_decay = 2/n_ep
+    epsilon_decay = 2/ep
 
-
-    for i in range(n_ep):
+    stock_rewards = np.zeros(ep)
+    for i in range(ep):
 
         if i % 100 == 0:
             print("episode : ", i, "score : ", Rewards)
@@ -77,3 +77,9 @@ def main(env,Alpha,Gamma,Eps,n_ep=5000):
 
         if Eps > 0.01:
             Eps -= epsilon_decay
+
+        stock_rewards[i] = Rewards
+
+
+def Visualize(stock_rewards):
+    pass
