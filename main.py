@@ -46,12 +46,17 @@ def get_best_action(state,Q):
 def main(env,Alpha,Gamma,Eps,n_ep=5000):
     done = False
 
+    epsilon_decay = 2/n_ep
 
 
     for i in range(n_ep):
-        
+
+        if i % 100 == 0:
+            print("episode : ", i, "score : ", Rewards)
+
         state = env.reset()
         state_dis = get_discrete_state(state)
+        Rewards = 0
 
         while not done:
             if np.random.random() > Eps:
@@ -63,7 +68,12 @@ def main(env,Alpha,Gamma,Eps,n_ep=5000):
             new_state, reward, done, info = env.step(action)
             new_state_dis = get_discrete_state(new_state)
 
+            Rewards += reward
+
             new_action = get_best_action(new_state_dis, Q)
 
             Q[state, action] = Q[state,action] + Alpha*(reward + Gamme*Q[new_state_dis, new_action] - Q[state,action])
             state_dis = new_state_dis
+
+        if Eps > 0.01:
+            Eps -= epsilon_decay
