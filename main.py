@@ -75,10 +75,10 @@ def main(env,Alpha,Gamma,Eps,ep=5000):
 
             new_action = get_best_action(new_state_dis, Q)
 
-            print(print(state.dtype))
-            print(print(action))
-            print(print(new_action))
-            print(type(new_state_dis))
+            print(state)
+            print(action)
+            print(new_state_dis)
+            print(new_action)
             Q[state, action] = Q[state,action] + Alpha*(reward + Gamma*Q[new_state_dis, new_action] - Q[state,action])
             state_dis = new_state_dis
 
