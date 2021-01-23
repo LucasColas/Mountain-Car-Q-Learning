@@ -44,7 +44,7 @@ def get_best_action(state,Q):
     return best_action
 
 def main(env,Alpha,Gamma,Eps,ep=60000):
-    done = False
+
     epsilon_decay = 2/ep
     stock_rewards = np.zeros(ep)
     Q = create_Q_table()
@@ -54,8 +54,7 @@ def main(env,Alpha,Gamma,Eps,ep=60000):
 
     score = 0
     for i in range(ep):
-
-
+        done = False
         if i % 100 == 0:
             print("episode : ", i, "score : ", score)
 
