@@ -43,21 +43,21 @@ def get_best_action(state,Q):
 
     return best_action
 
-def main(env,Alpha,Gamma,Eps,ep=5000):
+def main(env,Alpha,Gamma,Eps,ep=25000):
     done = False
     epsilon_decay = 2/ep
     stock_rewards = np.zeros(ep)
-
     Q = create_Q_table()
 
+    score = 0
     for i in range(ep):
-        Rewards = 0
+
 
         if i % 100 == 0:
-            print("episode : ", i, "score : ", Rewards)
+            print("episode : ", i, "score : ", score)
 
         state = env.reset()
-        print(state.dtype)
+        #print(state.dtype)
         state_dis = get_discrete_state(state)
 
 
@@ -71,26 +71,25 @@ def main(env,Alpha,Gamma,Eps,ep=5000):
             new_state, reward, done, info = env.step(action)
             new_state_dis = get_discrete_state(new_state)
 
-            Rewards += reward
+            score += reward
 
             new_action = get_best_action(new_state_dis, Q)
 
-            print(state)
-            print(action)
-            print(new_state_dis)
-            print(new_action)
-            Q[state, action] = Q[state,action] + Alpha*(reward + Gamma*Q[new_state_dis, new_action] - Q[state,action])
+
+            #print(Q[state_dis,action])
+            Q[state_dis, action] = Q[state_dis,action] + Alpha*(reward + Gamma*Q[new_state_dis, new_action] - Q[state_dis,action])
             state_dis = new_state_dis
 
+        stock_rewards[i] = score
         if Eps > 0.01:
             Eps -= epsilon_decay
 
-        stock_rewards[i] = Rewards
-    Visualize(stock_rewards)
+
+    #Visualize(ep,stock_rewards)
     env.close()
 
-def Visualize(stock_rewards):
-    plt.scatter(stock_rewards)
+def Visualize(ep,stock_rewards):
+    plt.plot(ep,stock_rewards)
     plt.show()
 
 
