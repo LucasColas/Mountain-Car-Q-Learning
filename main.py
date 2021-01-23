@@ -23,19 +23,19 @@ def get_discrete_state(state):
     vel_dis = np.digitize(state[1], pos_chunk)
 
     return (pos_dis, vel_dis)
-
 def create_Q_table():
-     Q = {}
-     states = []
-     for i in range(len(pos_chunk)):
-         for j in range(len(vel_chunk)):
-             states.append((i,j))
+    Q = {}
+    states = []
+
+    for i in range(len(pos_chunk)):
+        for j in range(len(vel_chunk)):
+            states.append((i,j))
 
     for state in states:
         for action in range(3):
             Q[state,action] = 0
 
-     return Q
+    return Q
 
 def get_best_action(state,Q):
     actions = np.array([Q[state,act] for act in range(3)])
@@ -45,18 +45,20 @@ def get_best_action(state,Q):
 
 def main(env,Alpha,Gamma,Eps,ep=5000):
     done = False
-
     epsilon_decay = 2/ep
-
     stock_rewards = np.zeros(ep)
+
+    Q = create_Q_table()
+
     for i in range(ep):
+        Rewards = 0
 
         if i % 100 == 0:
             print("episode : ", i, "score : ", Rewards)
 
         state = env.reset()
         state_dis = get_discrete_state(state)
-        Rewards = 0
+
 
         while not done:
             if np.random.random() > Eps:
@@ -72,7 +74,7 @@ def main(env,Alpha,Gamma,Eps,ep=5000):
 
             new_action = get_best_action(new_state_dis, Q)
 
-            Q[state, action] = Q[state,action] + Alpha*(reward + Gamme*Q[new_state_dis, new_action] - Q[state,action])
+            Q[state, action] = Q[state,action] + Alpha*(reward + Gamma*Q[new_state_dis, new_action] - Q[state,action])
             state_dis = new_state_dis
 
         if Eps > 0.01:
@@ -80,7 +82,11 @@ def main(env,Alpha,Gamma,Eps,ep=5000):
 
         stock_rewards[i] = Rewards
     Visualize(stock_rewards)
+    env.close()
 
 def Visualize(stock_rewards):
     plt.scatter(stock_rewards)
     plt.show()
+
+
+main(env, Alpha,Gamma,Eps)
