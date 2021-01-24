@@ -15,7 +15,7 @@ Alpha = 0.1
 Gamma = 0.99
 Eps = 1.0
 
-pos_chunk = np.linspace(env.observation_space.low[0], env.observation_space.high[0],12)
+pos_chunk = np.linspace(env.observation_space.low[0], env.observation_space.high[0],20)
 vel_chunk = np.linspace(env.observation_space.low[1], env.observation_space.high[1], 20)
 
 def get_discrete_state(state):
