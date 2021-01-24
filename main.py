@@ -80,14 +80,18 @@ def main(env,Alpha,Gamma,Eps,ep=75000):
             Eps -= epsilon_decay
         else:
             Eps = 0.01
-    Visualize(stock_rewards)
-    
+    Visualize(ep,stock_rewards)
+
 
 
     #Visualize(ep,stock_rewards)
     env.close()
 
-def Visualize(stock_rewards):
+def Visualize(ep,stock_rewards):
+    mean = np.zeros(ep)
+    for i in range(ep-100):
+        mean[i] = np.mean(stock_rewards[t:t+100])
+
     plt.plot(stock_rewards)
     plt.show()
 
