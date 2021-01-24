@@ -27,8 +27,8 @@ def create_Q_table():
     Q = {}
     states = []
 
-    for i in range(21):
-        for j in range(21):
+    for i in range(len(pos_chunk)):
+        for j in range(len(vel_chunk)):
             states.append((i,j))
 
     for state in states:
@@ -43,7 +43,7 @@ def get_best_action(state,Q):
 
     return best_action
 
-def main(env,Alpha,Gamma,Eps,ep=60000):
+def main(env,Alpha,Gamma,Eps,ep=75000):
 
     epsilon_decay = 2/ep
     stock_rewards = np.zeros(ep)
