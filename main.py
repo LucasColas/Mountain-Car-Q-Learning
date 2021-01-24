@@ -80,13 +80,15 @@ def main(env,Alpha,Gamma,Eps,ep=75000):
             Eps -= epsilon_decay
         else:
             Eps = 0.01
+    Visualize(stock_rewards)
+    
 
 
     #Visualize(ep,stock_rewards)
     env.close()
 
-def Visualize(ep,stock_rewards):
-    plt.plot(ep,stock_rewards)
+def Visualize(stock_rewards):
+    plt.plot(stock_rewards)
     plt.show()
 
 
