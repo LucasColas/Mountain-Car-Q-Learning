@@ -22,7 +22,7 @@ def get_discrete_state(state):
     pos_dis = np.digitize(state[0], pos_chunk)
     vel_dis = np.digitize(state[1], vel_chunk)
     return (pos_dis, vel_dis)
-    
+
 def create_Q_table():
     Q = {}
     states = []
@@ -38,7 +38,7 @@ def create_Q_table():
     return Q
 
 def get_best_action(state,Q):
-    actions = np.array([Q[state,act] for act in range(3)])
+    actions = np.array([Q[state,action] for action in range(3)])
     best_action = np.argmax(actions)
 
     return best_action
@@ -61,7 +61,7 @@ def main(env,Alpha,Gamma,Eps,ep=60000):
         state = env.reset()
         #print(state.dtype)
         state_dis = get_discrete_state(state)
-
+        score = 0
 
         while not done:
             if np.random.random() > Eps:
