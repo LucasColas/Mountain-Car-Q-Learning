@@ -66,22 +66,15 @@ def main(env,Alpha,Gamma,Eps,ep=60000):
         while not done:
             if np.random.random() > Eps:
                 action = get_best_action(state_dis,Q)
-
             else:
                 action = np.random.choice([0,1,2])
-
             new_state, reward, done, info = env.step(action)
             new_state_dis = get_discrete_state(new_state)
-
             score += reward
-
             new_action = get_best_action(new_state_dis, Q)
-
-
             #print(Q[state_dis,action])
             Q[state_dis, action] = Q[state_dis,action] + Alpha*(reward + Gamma*Q[new_state_dis, new_action] - Q[state_dis,action])
             state_dis = new_state_dis
-
         stock_rewards[i] = score
         if Eps > 0.01:
             Eps -= epsilon_decay
