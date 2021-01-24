@@ -21,8 +21,8 @@ vel_chunk = np.linspace(env.observation_space.low[1], env.observation_space.high
 def get_discrete_state(state):
     pos_dis = np.digitize(state[0], pos_chunk)
     vel_dis = np.digitize(state[1], vel_chunk)
-
     return (pos_dis, vel_dis)
+    
 def create_Q_table():
     Q = {}
     states = []
