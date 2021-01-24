@@ -12,7 +12,7 @@ print(env.observation_space.high)
 print(env.observation_space.low)
 
 Alpha = 0.1
-Gamma = 0.9
+Gamma = 0.99
 Eps = 1.0
 
 pos_chunk = np.linspace(env.observation_space.low[0], env.observation_space.high[0],20)
@@ -85,6 +85,8 @@ def main(env,Alpha,Gamma,Eps,ep=60000):
         stock_rewards[i] = score
         if Eps > 0.01:
             Eps -= epsilon_decay
+        else:
+            Eps = 0.01
 
 
     #Visualize(ep,stock_rewards)
