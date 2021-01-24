@@ -86,7 +86,7 @@ def main(env,Alpha,Gamma,Eps,ep=75000):
 def Visualize(ep,stock_rewards):
     mean_r = np.zeros(ep)
     for i in range(ep-100):
-        mean_r[i] = np.mean(stock_rewards[t:t+100])
+        mean_r[i] = np.mean(stock_rewards[i:i+100])
 
     plt.plot(mean_r)
     plt.show()
