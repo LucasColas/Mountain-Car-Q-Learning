@@ -11,8 +11,8 @@ env = gym.make(env_name)
 print(env.observation_space.high)
 print(env.observation_space.low)
 
-Alpha = 0.1
-Gamma = 0.99
+Alpha = 0.15
+Gamma = 0.999
 Eps = 1.0
 
 pos_chunk = np.linspace(env.observation_space.low[0], env.observation_space.high[0],20)
