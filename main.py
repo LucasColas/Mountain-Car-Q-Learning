@@ -15,20 +15,20 @@ Alpha = 0.1
 Gamma = 0.99
 Eps = 1.0
 
-pos_chunk = np.linspace(env.observation_space.low[0], env.observation_space.high[0],20)
+pos_chunk = np.linspace(env.observation_space.low[0], env.observation_space.high[0],12)
 vel_chunk = np.linspace(env.observation_space.low[1], env.observation_space.high[1], 20)
 
 def get_discrete_state(state):
     pos_dis = np.digitize(state[0], pos_chunk)
-    vel_dis = np.digitize(state[1], pos_chunk)
+    vel_dis = np.digitize(state[1], vel_chunk)
 
     return (pos_dis, vel_dis)
 def create_Q_table():
     Q = {}
     states = []
 
-    for i in range(len(pos_chunk)):
-        for j in range(len(vel_chunk)):
+    for i in range(21):
+        for j in range(21):
             states.append((i,j))
 
     for state in states:
