@@ -76,10 +76,10 @@ def main(env,Alpha,Gamma,Eps,ep=75000, test_ep=100):
             Q[state_dis, action] = Q[state_dis,action] + Alpha*(reward + Gamma*Q[new_state_dis, new_action] - Q[state_dis,action])
             state_dis = new_state_dis
         stock_rewards[i] = score
-        if Eps > 0.01:
+        if Eps > 0.001:
             Eps -= epsilon_decay
         else:
-            Eps = 0.01
+            Eps = 0.001
     Visualize(ep,stock_rewards)
 
     for i in range(test_ep):
