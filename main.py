@@ -43,7 +43,7 @@ def get_best_action(state,Q):
 
     return best_action
 
-def main(env,Alpha,Gamma,Eps,ep=75000, test_ep=120):
+def main(env,Alpha,Gamma,Eps,ep=75000, test_ep=100):
 
     epsilon_decay = 2/ep
     stock_rewards = np.zeros(ep)
@@ -86,7 +86,7 @@ def main(env,Alpha,Gamma,Eps,ep=75000, test_ep=120):
         done = False
         state = env.reset()
         state_dis = get_discrete_state(state)
-        if i % 75 == 0:
+        if i % 10 == 0:
             print("score", score)
         score = 0
 
@@ -96,6 +96,7 @@ def main(env,Alpha,Gamma,Eps,ep=75000, test_ep=120):
             new_state_dis = get_discrete_state(new_state)
             score += reward
             state_dis = new_state_dis
+
     env.close()
 
 def Visualize(ep,stock_rewards):
