@@ -51,7 +51,6 @@ def main(env,Alpha,Gamma,Eps,ep=75000):
 
     env._max_episode_steps = 1000
 
-
     score = 0
     for i in range(ep):
         done = False
@@ -84,7 +83,7 @@ def main(env,Alpha,Gamma,Eps,ep=75000):
     env.close()
 
 def Visualize(ep,stock_rewards):
-    mean_r = np.zeros(ep)
+    mean_r = np.zeros(ep-100)
     for i in range(ep-100):
         #print(i)
         mean_r[i] = np.mean(stock_rewards[i:i+101])
