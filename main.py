@@ -43,11 +43,12 @@ def get_best_action(state,Q):
 
     return best_action
 
-def main(env,Alpha,Gamma,Eps,ep=75000):
+def main(env,Alpha,Gamma,Eps,ep=75000, test_ep=120):
 
     epsilon_decay = 2/ep
     stock_rewards = np.zeros(ep)
     Q = create_Q_table()
+
 
     env._max_episode_steps = 1000
 
@@ -80,6 +81,9 @@ def main(env,Alpha,Gamma,Eps,ep=75000):
         else:
             Eps = 0.01
     Visualize(ep,stock_rewards)
+
+    for i in range(test_ep):
+        
     env.close()
 
 def Visualize(ep,stock_rewards):
