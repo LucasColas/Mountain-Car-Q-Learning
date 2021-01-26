@@ -83,7 +83,19 @@ def main(env,Alpha,Gamma,Eps,ep=75000, test_ep=120):
     Visualize(ep,stock_rewards)
 
     for i in range(test_ep):
-        
+        done = False
+        state = env.reset()
+        state_dis = get_discrete_state(state)
+        if i % 75 == 0:
+            print("score", score)
+        score = 0
+
+        while not done:
+            action = get_best_action(state_dis,Q)
+            new_state, reward, done, info = env.step(action)
+            new_state_dis = get_discrete_state(new_state)
+            score += reward
+            state_dis = new_state_dis
     env.close()
 
 def Visualize(ep,stock_rewards):
