@@ -1,6 +1,6 @@
 # Cartpole-Q-Learning
 
-Implementation of Q learning in Mountain Car.
+Solve Mountain Car with Q-Learning.
 
 Requirements :
 ```
