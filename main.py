@@ -2,7 +2,6 @@ import gym
 import matplotlib.pyplot as plt
 import numpy as np
 
-
 env_name = "MountainCar-v0"
 env = gym.make(env_name)
 #env.reset()
