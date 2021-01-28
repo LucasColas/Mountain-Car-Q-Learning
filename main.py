@@ -79,11 +79,12 @@ def main(env,Alpha,Gamma,Eps,ep=75000, test_ep=100):
             Eps -= epsilon_decay
         else:
             Eps = 0.001
-    Visualize(ep,stock_rewards)
+
 
     for i in range(test_ep):
         done = False
         state = env.reset()
+        env.make()
         state_dis = get_discrete_state(state)
         if i % 10 == 0:
             print("score", score)
@@ -93,9 +94,11 @@ def main(env,Alpha,Gamma,Eps,ep=75000, test_ep=100):
             action = get_best_action(state_dis,Q)
             new_state, reward, done, info = env.step(action)
             new_state_dis = get_discrete_state(new_state)
+            env.make()
             score += reward
             state_dis = new_state_dis
 
+    Visualize(ep,stock_rewards)
     env.close()
 
 def Visualize(ep,stock_rewards):
