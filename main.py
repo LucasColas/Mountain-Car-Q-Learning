@@ -94,7 +94,7 @@ def main(env,Alpha,Gamma,Eps,ep=75000, test_ep=100):
             action = get_best_action(state_dis,Q)
             new_state, reward, done, info = env.step(action)
             new_state_dis = get_discrete_state(new_state)
-            env.make()
+            env.render()
             score += reward
             state_dis = new_state_dis
 
