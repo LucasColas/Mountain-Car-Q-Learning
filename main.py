@@ -84,7 +84,7 @@ def main(env,Alpha,Gamma,Eps,ep=75000, test_ep=100):
     for i in range(test_ep):
         done = False
         state = env.reset()
-        env.make()
+        env.render()
         state_dis = get_discrete_state(state)
         if i % 10 == 0:
             print("score", score)
