@@ -48,7 +48,6 @@ def main(env,Alpha,Gamma,Eps,ep=75000, test_ep=100):
     stock_rewards = np.zeros(ep)
     Q = create_Q_table()
 
-
     env._max_episode_steps = 1000
 
     score = 0
