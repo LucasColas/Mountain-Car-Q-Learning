@@ -44,7 +44,7 @@ def get_best_action(state,Q):
 
 def main(env,Alpha,Gamma,Eps,ep=75000, test_ep=100):
 
-    epsilon_decay = 2/ep
+    epsilon_decay = 1/ep
     stock_rewards = np.zeros(ep)
     Q = create_Q_table()
 
