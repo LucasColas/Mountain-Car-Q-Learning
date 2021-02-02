@@ -8,3 +8,6 @@ numpy
 gym 
 matplotlib
 ``` 
+Then, run ```main.py```
+
+Or just launch ```MC_Q-Learning.ipynb``` in Colab !
